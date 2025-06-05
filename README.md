@@ -1,6 +1,6 @@
 # Functional Requirements
 
-## 1. Contents Filter
+### 1. Contents Filter
 
 - **Pricing Option**
   - There are three options: Paid, Free, and View Only
@@ -11,7 +11,7 @@
 - Clicking the Reset Button should restore the default state.
 - The filter or search results should persist across page reloads, but avoid using browser storage for this.
 
-## 2. Contents List
+### 2. Contents List
 
 - Display each item’s photo, user name, title, and the Pricing Option (Free/View Only). For Paid items, the price should be shown.
 - Apply a grid system that adjusts based on the device width:
@@ -21,7 +21,7 @@
   - Below 480px: 1 column
 - Implement infinite scroll to load more items as the user scrolls (loading size can be determined as needed).
 
-## 3. Keyword Search
+### 3. Keyword Search
 
 - Filter the list based on a keyword search 
   - (e.g., searching "Anisha" should filter content that includes "Anisha" in the user name or title).
