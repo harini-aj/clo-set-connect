@@ -125,7 +125,41 @@ you chose each one.
     
 
 
-    
+# Resources
+
+API : [https://closet-recruiting-api.azurewebsites.net/api/data](https://closet-recruiting-api.azurewebsites.net/api/data)
+
+## Sample Data
+    [
+      {
+        "id": "content-001",
+        "creator": "Adam",
+        "title": "Yellow green coat",
+        "pricingOption": 0,
+        "imagePath": "https://closetfrontrecruiting.blob.core.windows.net/images/thumbnail_1.jpeg",
+        "price": 50
+      },
+      {
+        "id": "content-002",
+        "creator": "Benny",
+        "title": "Brown Anorak",
+        "pricingOption": 1,
+        "imagePath": "https://closetfrontrecruiting.blob.core.windows.net/images/thumbnail_2.png",
+        "price": 30
+      },
+      {
+        "id": "content-003",
+        "creator": "Catlin",
+        "title": "Block shape mini bag",
+        "pricingOption": 2,
+        "imagePath": "https://closetfrontrecruiting.blob.core.windows.net/images/thumbnail_3.jpeg",
+        "price": 15
+      }
+    ]
+
+![image](https://github.com/user-attachments/assets/5b0aa461-6c8f-4cf7-b286-d36d0d2158fb)
+
+
 
     
 
