@@ -34,15 +34,15 @@
 
 # Optional Requirements
 
-## 1. Test Code Writing
+### 1. Test Code Writing
 
 - Please include test code for your implementation.
 
-## 2. TypeScript Application
+### 2. TypeScript Application
 
 - The project should be implemented using TypeScript.
 
-## 3. Sorting Implementation
+### 3. Sorting Implementation
 
 - Implement a sorting feature in a dropdown format with the following criteria:
   - Item Name (Default)
@@ -50,14 +50,14 @@
   - Lower Price
 - Sort only according to the criteria above; no need to consider secondary sorting for items with the same value.
 
-## 4. Pricing Slider Implementation
+### 4. Pricing Slider Implementation
 
 - Create a range slider with a minimum value of 0 and a maximum value of 999.
 - The slider should be activated/deactivated based on whether the Paid option is selected or not.
 - When the handle is dragged and dropped, the selected amount should be displayed on both sides of the slider, filtering items only within that price range.
 - The handles should not overlap.
 
-## 5. Skeleton UI for Infinite Scroll
+### 5. Skeleton UI for Infinite Scroll
 
 - Implement a skeleton UI that corresponds to the infinite scroll of the content list.
 
