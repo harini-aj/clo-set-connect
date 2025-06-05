@@ -1,54 +1,133 @@
-# React + TypeScript + Vite
+# Functional Requirements
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1. Contents Filter
 
-Currently, two official plugins are available:
+- **Pricing Option**
+  - There are three options: Paid, Free, and View Only
+  - The default state should be unchecked, and when all options are unchecked, all data (Content List) should be displayed.
+  - Content List should be filtered based on the selected Pricing Option(s).
+    - (e.g., If Paid is selected, only Paid content should be shown.)
+  - Multiple Pricing Options can be selected at once.
+- Clicking the Reset Button should restore the default state.
+- The filter or search results should persist across page reloads, but avoid using browser storage for this.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 2. Contents List
 
-## Expanding the ESLint configuration
+- Display each item’s photo, user name, title, and the Pricing Option (Free/View Only). For Paid items, the price should be shown.
+- Apply a grid system that adjusts based on the device width:
+  - Default: 4 columns
+  - Below 1200px: 3 columns
+  - Below 768px: 2 columns
+  - Below 480px: 1 column
+- Implement infinite scroll to load more items as the user scrolls (loading size can be determined as needed).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 3. Keyword Search
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Filter the list based on a keyword search 
+  - (e.g., searching "Anisha" should filter content that includes "Anisha" in the user name or title).
+- If no keyword is entered, all items should be displayed.
+- Keyword searches should be combinable with Pricing Option filters.
+  - (e.g., searching for "Anisha" and selecting Paid should filter content that is both Paid and related to "Anisha.")
+- As with filters, the search results should persist across page reloads without relying on browser storage.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# Optional Requirements
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 1. Test Code Writing
+
+- Please include test code for your implementation.
+
+## 2. TypeScript Application
+
+- The project should be implemented using TypeScript.
+
+## 3. Sorting Implementation
+
+- Implement a sorting feature in a dropdown format with the following criteria:
+  - Item Name (Default)
+  - Higher Price
+  - Lower Price
+- Sort only according to the criteria above; no need to consider secondary sorting for items with the same value.
+
+## 4. Pricing Slider Implementation
+
+- Create a range slider with a minimum value of 0 and a maximum value of 999.
+- The slider should be activated/deactivated based on whether the Paid option is selected or not.
+- When the handle is dragged and dropped, the selected amount should be displayed on both sides of the slider, filtering items only within that price range.
+- The handles should not overlap.
+
+## 5. Skeleton UI for Infinite Scroll
+
+- Implement a skeleton UI that corresponds to the infinite scroll of the content list.
+
+
+# Non - Functional Requirements
+
+- The project should be developed using React.js.
+- Use a state management library (e.g., Redux, Recoil, etc.).
+- You are free to use CSS-in-JS or a CSS pre-processor, and any test code
+libraries of your choice.
+- The project must be runnable in a local environment.
+(e.g., npm run start should allow you to access the app on localhost:3000.)
+- Use Git for version control.
+- You must use the provided API (data).
+- The implementation should resemble the given design as closely as possible.
+- There are no restrictions on the packages you can use, but you must explain why
+you chose each one.
+
+
+
+# Approach / Design considerations
+
+### Create vite + TypeScript
+- for strong static typing
+- Less buggy compared to JS
+  
+### Redux-toolkit (state management for apps that scales)
+  
+### Material UI 
+- Inbuild support for CSS-in_JS using emotions
+- Consistent, polished UI for Quick frontend engineering
+- Has powerful, responsive grid layout component which is ideal for the given scenario
+
+
+# Tasks Identified
+- P1: Inititial project setup using vite + typescript, Material UI, Redux Toolkit 
+- P1: Redux store setup
+- P1: UI Components
+      - Keyword search with debounced fetch
+      - Content filter
+      - Contents List, with lazy loading, infinite scroll, responsive based on device
+- P2: Sorting
+- P2: Pricing slider filter
+
+
+# Setup
+    // Create react app using vite 
+    npm create vite@latest
+    
+    // go to app dir and initialize git
+    git init
+
+    git add . 
+
+    git commit -m "feat: create project"
+
+    git remote add origin https://github.com/harini-aj/clo-set-connect.git
+
+    git pull origin master --allow-unrelated-histories
+
+    git push -u origin master
+
+    npm install @mui/material @emotion/react @emotion/styled
+
+    
+
+
+    
+
+    
+
+
+  
