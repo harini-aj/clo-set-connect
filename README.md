@@ -122,6 +122,10 @@ you chose each one.
 
     npm install @mui/material @emotion/react @emotion/styled
 
+    npm install @reduxjs/toolkit react-redux
+
+    npm install --save-dev @types/react-redux
+
     
 
 
