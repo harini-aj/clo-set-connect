@@ -106,10 +106,22 @@ you chose each one.
 # Setup
     // Create react app using vite 
     npm create vite@latest
-    
+
     // go to app dir and initialize git
     git init
 
+    // Install matririal UI
+    npm install @mui/material @emotion/react @emotion/styled
+
+    // Redux toolkit
+    npm install @reduxjs/toolkit react-redux
+
+    // Redux types to support type script
+    npm install --save-dev @types/react-redux
+
+    // Install axios
+    npm install axios 
+    
     git add . 
 
     git commit -m "feat: create project"
@@ -119,12 +131,6 @@ you chose each one.
     git pull origin master --allow-unrelated-histories
 
     git push -u origin master
-
-    npm install @mui/material @emotion/react @emotion/styled
-
-    npm install @reduxjs/toolkit react-redux
-
-    npm install --save-dev @types/react-redux
 
     
 
