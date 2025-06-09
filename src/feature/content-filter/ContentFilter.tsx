@@ -1,4 +1,4 @@
-import { Button, FormControlLabel, Typography, type SxProps, type Theme } from "@mui/material"
+import { Button, FormControlLabel, Slider, Typography, type SxProps, type Theme } from "@mui/material"
 import { Box } from "@mui/system";
 import type React from "react";
 import Checkbox from '@mui/material/Checkbox';
@@ -9,9 +9,13 @@ type props = {
     isPaid: boolean;
     isFree: boolean;
     isViewOnly: boolean;
+    priceRange: number[];
+    minRange: number;
+    maxRange: number;
     onPaidChange: () => void;
     onFreeChange: () => void;
     onViewOnlyChange: () => void;
+    onPriceRangeChange: (event: Event, value: number[], activeThumb: number) => void
     onReset: ()=> void;
 }
 
@@ -22,9 +26,12 @@ export const ContentFilter:React.FC<props> = ({
     onPaidChange, 
     onFreeChange, 
     onViewOnlyChange,
-    onReset
+    priceRange,
+    minRange,
+    maxRange,
+    onReset,
+    onPriceRangeChange
 }) => {
-
     return (
         <Box sx={{ display: "flex"}}>
             <Typography variant="subtitle1" color="text.secondary" sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
@@ -45,6 +52,19 @@ export const ContentFilter:React.FC<props> = ({
                 label="View Only"
                 labelPlacement="end"
                 />
+            <Box sx={{ width: 200, marginTop: 1}}>
+                <Slider
+                    size="small"
+                    defaultValue={[minRange, maxRange]}
+                    aria-label="Small"
+                    valueLabelDisplay="auto"
+                    value = {priceRange}
+                    onChange={onPriceRangeChange}
+                    min={minRange}
+                    max={maxRange}
+                />
+            </Box>
+            
             <Button variant="text" sx={{ ml: "auto" }} onClick={onReset}>RESET</Button>
         </Box>
     )

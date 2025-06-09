@@ -8,14 +8,12 @@ type props = {
     onTextChange: (value: string) => void;
 }
 
-
-
 export const KeySearch:React.FC<props> = ({ 
     sx, 
     searchText,
     onTextChange
  }) => {
-    
+
     const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
         onTextChange(e.target.value)
     }
