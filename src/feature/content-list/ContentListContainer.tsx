@@ -6,9 +6,10 @@ type props = {
     data? : Content[]
 }
 
-export const ContentListContainer:React.FC<props> = ({ data }) => {
+const ContentListContainer:React.FC<props> = ({ data }) => {
     return (
         <>
+            {(data && data.length > 0) && (data.length + " results")}
             <Grid container spacing={{ md: 3, lg: 4 }}>
                 {(data || []).map((item, index) => (
                     <Grid key={index} size={{ xs: 12, sm: 6,  md: 4, lg: 3 }}>
@@ -19,3 +20,5 @@ export const ContentListContainer:React.FC<props> = ({ data }) => {
         </>
     )
 }
+
+export default ContentListContainer
