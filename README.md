@@ -99,6 +99,8 @@ you chose each one.
       - Keyword search with debounced fetch
       - Content filter
       - Contents List, with lazy loading, infinite scroll, responsive based on device
+- P1: URL Statemanagement for filters
+- P1: Unit Tests
 - P2: Sorting
 - P2: Pricing slider filter
 
@@ -118,6 +120,9 @@ you chose each one.
 
     // Redux types to support type script
     npm install --save-dev @types/react-redux
+
+    // for using useSearchParams hook
+    npm install react-router-dom
 
     // Install axios
     npm install axios 
