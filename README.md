@@ -112,7 +112,7 @@ you chose each one.
 - P1: Redux store setup ✅
 - P1: UI Components
   - Keyword search with debounced filtering ✅
-  - Content filter : Pricing options, Reset button and slider ✅
+  - Content filter : Pricing options and Reset button ✅
   - Contents List, with lazy loading, responsive based on device ✅
   - Home page, Container component for all the above components ✅
 - P1: URL State management for filters and key search ✅
