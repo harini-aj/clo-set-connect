@@ -94,8 +94,6 @@ libraries of your choice.
 - There are no restrictions on the packages you can use, but you must explain why
 you chose each one.
 
-
-
 # Approach / Design considerations
 
 ### Create vite + TypeScript
@@ -109,20 +107,18 @@ you chose each one.
 - Consistent, polished UI for Quick frontend engineering
 - Has powerful, responsive grid layout component which is ideal for the given scenario
 
-
 # Tasks Identified
 - P1: Inititial project setup using vite + typescript, Material UI, Redux Toolkit ✅
 - P1: Redux store setup ✅
 - P1: UI Components
-      - Keyword search with debounced fetch ✅
-      - Content filter : Pricing options, Reset button and slider ✅
-      - Contents List, with lazy loading, responsive based on device ✅
-- P1: URL Statemanagement for filters ✅
+  - Keyword search with debounced filtering ✅
+  - Content filter : Pricing options, Reset button and slider ✅
+  - Contents List, with lazy loading, responsive based on device ✅
+- P1: URL State management for filters and key search ✅
 - P1: Unit Tests ✅
 - P2: Sorting ✅
 - P2: Pricing slider filter ✅
-- P2: Infinite scroll (Partial implmentation) 🔄
-
+- P2: Infinite scroll (Skeleton implmentation, API needs to ssupport pagination) 🔄
 
 # Setup
     // Create react app using vite 
@@ -163,9 +159,6 @@ you chose each one.
 
     git push -u origin master
 
-    
-
-
 # Resources
 
 API : [https://closet-recruiting-api.azurewebsites.net/api/data](https://closet-recruiting-api.azurewebsites.net/api/data)
@@ -199,8 +192,6 @@ API : [https://closet-recruiting-api.azurewebsites.net/api/data](https://closet-
     ]
 
 ![image](https://github.com/user-attachments/assets/5b0aa461-6c8f-4cf7-b286-d36d0d2158fb)
-
-
 
 # References
 
