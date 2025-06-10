@@ -185,9 +185,24 @@ API : [https://closet-recruiting-api.azurewebsites.net/api/data](https://closet-
 
 # References
 
+React API Documnetation:
+[https://react.dev/reference/react](https://react.dev/reference/react)
 
-Infinite Scoll
-![https://dev.to/hey_yogini/infinite-scrolling-in-react-with-intersection-observer-22fh](https://dev.to/hey_yogini/infinite-scrolling-in-react-with-intersection-observer-22fh)
+TypeScript API Documentation:
+[https://www.typescriptlang.org/docs/](https://www.typescriptlang.org/docs/)
+
+Material UI API Documentaton: 
+[https://mui.com/material-ui/react-grid/](https://mui.com/material-ui/react-grid/)
+
+Redux setup:
+[https://react-redux.js.org/introduction/getting-started](https://react-redux.js.org/introduction/getting-started)
+
+Jest Setup:
+[https://jestjs.io/docs/getting-started](https://jestjs.io/docs/getting-started)
+
+Infinite Scoll :
+[https://dev.to/hey_yogini/infinite-scrolling-in-react-with-intersection-observer-22fh](https://dev.to/hey_yogini/infinite-scrolling-in-react-with-intersection-observer-22fh)
+
 
 
 
