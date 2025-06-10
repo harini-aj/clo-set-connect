@@ -185,6 +185,9 @@ API : [https://closet-recruiting-api.azurewebsites.net/api/data](https://closet-
 
 # References
 
+Vite setup:
+(https://vite.dev/guide/)[https://vite.dev/guide/]
+
 React API Documnetation:
 [https://react.dev/reference/react](https://react.dev/reference/react)
 
