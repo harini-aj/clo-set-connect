@@ -183,11 +183,11 @@ API : [https://closet-recruiting-api.azurewebsites.net/api/data](https://closet-
 
 
 
-#References
+# References
 
 
-
-[Infinite scroll](https://dev.to/hey_yogini/infinite-scrolling-in-react-with-intersection-observer-22fh)
+Infinite Scoll
+![https://dev.to/hey_yogini/infinite-scrolling-in-react-with-intersection-observer-22fh](https://dev.to/hey_yogini/infinite-scrolling-in-react-with-intersection-observer-22fh)
 
 
 
