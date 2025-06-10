@@ -126,7 +126,14 @@ you chose each one.
 
     // Install axios
     npm install axios 
-    
+
+    //Jest setup
+    npm install --save-dev jest babel-jest @types/jest ts-jest jest-environment-jsdom
+
+    npm install --save-dev @babel/preset-env @babel/preset-react @babel/preset-typescript
+
+    npm install --save-dev @testing-library/react @testing-library/jest-dom @testing-library/user-event
+
     git add . 
 
     git commit -m "feat: create project"
@@ -176,7 +183,12 @@ API : [https://closet-recruiting-api.azurewebsites.net/api/data](https://closet-
 
 
 
-    
+#References
+
+
+
+[Infinite scroll](https://dev.to/hey_yogini/infinite-scrolling-in-react-with-intersection-observer-22fh)
+
 
 
   
