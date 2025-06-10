@@ -1,6 +1,6 @@
 import { InputAdornment, TextField, type SxProps, type Theme } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
-import { type ChangeEvent } from "react";
+import { type ChangeEvent, type ReactNode } from "react";
 
 type KeySearchProps = {
     sx?: SxProps<Theme>;
@@ -12,7 +12,7 @@ export const KeySearch:React.FC<KeySearchProps> = ({
     sx, 
     searchText,
     onTextChange
- }) => {
+ }): ReactNode => {
 
     const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
         onTextChange(e.target.value)

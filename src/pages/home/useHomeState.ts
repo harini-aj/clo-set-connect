@@ -46,9 +46,10 @@ export const useHomeState = () => {
 
     }, [isPaid, isFree, isViewOnly, debouncedKey, sortBy, minPrice, maxPrice, setSearchParams])
 
-    const filteredData = useMemo(() => {
-        const start = performance.now()
+    const filteredData = useMemo((): typeof items => {
+        //const start = performance.now()
         let filtered = items;
+        if(items.length === 0) return items
         if (isPaid || isFree || isViewOnly) {
             filtered = items.filter(item => {
                 return (
@@ -66,12 +67,12 @@ export const useHomeState = () => {
                 item.creator.toLowerCase().includes(debouncedKey.toLowerCase())
             );
         }
-        const end = performance.now()
-        console.log(`Filtering took ${(end - start)} ms`, isPaid, isFree, isViewOnly, debouncedKey);
+        //const end = performance.now()
+        //console.log(`Filtering took ${(end - start)} ms`, isPaid, isFree, isViewOnly, debouncedKey);
         return filtered;
     }, [items, isPaid, isFree, isViewOnly, debouncedMinPrice, debouncedMaxPrice, debouncedKey]);
 
-    const sortedData = useMemo(()=> {
+    const sortedData = useMemo((): typeof items => {
         const dataToSort = [...filteredData]; 
         if(sortBy === "0") 
             return dataToSort.sort((a,b) => a.title?.localeCompare(b.title || ""))
@@ -81,15 +82,15 @@ export const useHomeState = () => {
             return dataToSort.sort((a,b) => a.price - b.price)
     }, [sortBy, filteredData])
 
-    const minPriceRange = useMemo(() => {
+    const minPriceRange = useMemo((): number => {
         return (items.length > 0) ? Math.min(...items.map(item => item.price)) : 0
     }, [items])
 
-    const maxPriceRange = useMemo(() => {
+    const maxPriceRange = useMemo((): number => {
         return (items.length > 0) ? Math.max(...items.map(item => item.price)) : 0
     }, [items])
 
-    const handleReset = useCallback (() => {
+    const handleReset = useCallback ((): void => {
         setPaid(false)
         setFree(false)
         setViewOnly(false)
@@ -97,11 +98,11 @@ export const useHomeState = () => {
         setMaxPrice(maxPriceRange)
     }, [maxPriceRange, minPriceRange])
 
-    const handleSortByChange = useCallback ((e: SelectChangeEvent) => {
+    const handleSortByChange = useCallback ((e: SelectChangeEvent): void => {
         setSortBy(e.target.value as sortByType)
     }, [])
 
-    const handlePriceRangeChange = useCallback ((_event: Event, newValue: number[], activeThumb: number) => {
+    const handlePriceRangeChange = useCallback ((_event: Event, newValue: number[], activeThumb: number): void => {
        if(newValue[0] < newValue[1]){
             if(activeThumb == 0){
                 setMinPrice(newValue[0])
@@ -111,7 +112,7 @@ export const useHomeState = () => {
         }
     }, [])
 
-    const fetchMore = async () => {
+    const fetchMore = async (): Promise<void> => {
         if (!hasMore || isFetchingMore) return;
         setIsFetchingMore(true);
         const newPage = page + 1;

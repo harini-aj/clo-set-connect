@@ -1,12 +1,13 @@
 import { Grid } from "@mui/material"
 import { ContentCard } from "./ContentCard"
 import type { Content } from "../../types/content.types"
+import type { ReactNode } from "react"
 
 type ContentListContainerProps = {
     data? : Content[]
 }
 
-const ContentListContainer:React.FC<ContentListContainerProps> = ({ data }) => {
+const ContentListContainer:React.FC<ContentListContainerProps> = ({ data }): ReactNode => {
     return (
         <>
             {(data && data.length > 0) && (data.length + " results")}
