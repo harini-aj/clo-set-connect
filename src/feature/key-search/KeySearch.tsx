@@ -2,13 +2,13 @@ import { InputAdornment, TextField, type SxProps, type Theme } from "@mui/materi
 import SearchIcon from '@mui/icons-material/Search';
 import { type ChangeEvent } from "react";
 
-type props = {
+type KeySearchProps = {
     sx?: SxProps<Theme>;
     searchText: string;
     onTextChange: (value: string) => void;
 }
 
-export const KeySearch:React.FC<props> = ({ 
+export const KeySearch:React.FC<KeySearchProps> = ({ 
     sx, 
     searchText,
     onTextChange

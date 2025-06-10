@@ -4,7 +4,7 @@ import type React from "react";
 import Checkbox from '@mui/material/Checkbox';
 
 
-type props = {
+export type ContentFilterProps = {
     sx?: SxProps<Theme>;
     isPaid: boolean;
     isFree: boolean;
@@ -19,7 +19,7 @@ type props = {
     onReset: ()=> void;
 }
 
-export const ContentFilter:React.FC<props> = ({ 
+const ContentFilter:React.FC<ContentFilterProps> = ({ 
     isPaid, 
     isFree,  
     isViewOnly, 
@@ -54,9 +54,10 @@ export const ContentFilter:React.FC<props> = ({
                 />
             <Box sx={{ width: 200, marginTop: 1}}>
                 <Slider
+                    name = "price-silder"
                     size="small"
                     defaultValue={[minRange, maxRange]}
-                    aria-label="Small"
+                    aria-label="Price Range Slider"
                     valueLabelDisplay="auto"
                     value = {priceRange}
                     onChange={onPriceRangeChange}
@@ -69,3 +70,5 @@ export const ContentFilter:React.FC<props> = ({
         </Box>
     )
 }
+
+export default ContentFilter

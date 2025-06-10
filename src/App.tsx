@@ -1,5 +1,5 @@
 import './App.css'
-import { Home } from './pages/Home'
+import { Home } from './pages/home/Home'
 import Box from '@mui/material/Box';
 import { ThemeProvider, createTheme, CssBaseline, ToggleButton, ToggleButtonGroup, Icon } from '@mui/material';
 import { useState } from 'react';

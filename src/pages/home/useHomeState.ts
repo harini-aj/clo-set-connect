@@ -1,18 +1,14 @@
-import React, { Suspense, useCallback, useEffect, useState, useMemo } from "react"
-import { KeySearch } from "../feature/key-search/KeySearch"
-import { ContentFilter } from "../feature/content-filter/ContentFilter"
-import Box from '@mui/material/Box';
-import { useAppSelector, useAppDispatch } from '../app/hooks'
-import { fetchContent } from "../feature/content-list/contentSlice";
-import { CircularProgress, FormControl, MenuItem, Select, Typography, type SelectChangeEvent } from "@mui/material";
-import { lazy } from 'react';
-import useDebounce from "../hooks/useDebounce";
-const ContentListContainer = lazy(() => import("../feature/content-list/ContentListContainer"));
+import { useCallback, useEffect, useState, useMemo } from "react"
+import { useAppSelector, useAppDispatch } from '../../app/hooks'
+import { fetchContent } from "../../feature/content-list/contentSlice";
+import { type SelectChangeEvent } from "@mui/material";
+import useDebounce from "../../hooks/useDebounce";
 import { useSearchParams } from 'react-router-dom'
+import { constants } from "../../utils/constants";
 
-type sortByType = "0" | "1" | "2"
+export type sortByType = "0" | "1" | "2"
 
-export const Home:React.FC = () => {
+export const useHomeState = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [isPaid, setPaid] = useState<boolean>(searchParams.get('isPaid') === "true" ? true : false)
     const [isFree, setFree] = useState<boolean>(searchParams.get('isFree') === "true" ? true : false)
@@ -27,10 +23,13 @@ export const Home:React.FC = () => {
     const debouncedKey = useDebounce(key, 300);
     const {items, loading, error} = useAppSelector((state) => state.content)
     const dispatch = useAppDispatch()
+    const [page, setPage] = useState(1);
+    const [hasMore, setHasMore] = useState(true);
+    const [isFetchingMore, setIsFetchingMore] = useState(false);
 
     useEffect(() => {
-        dispatch(fetchContent())
-    }, [dispatch])
+        dispatch(fetchContent({page: page, limit:constants.CONTENT_LIST_PAGE_LIMIT}))
+    }, [dispatch, page])
 
     useEffect(() => {
         const params = new URLSearchParams();
@@ -112,73 +111,42 @@ export const Home:React.FC = () => {
         }
     }, [])
 
-    const getErrorComponent = useCallback(() => {
-        return <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" minHeight="200px">
-            <Typography color="error" variant="body1" sx={{ mb: 1 }}>
-                Something went wrong while fetching content.
-            </Typography>
-            <Typography
-                variant="body2"
-                color="primary"
-                sx={{ cursor: "pointer", textDecoration: "underline" }}
-                onClick={() => dispatch(fetchContent())}
-            >
-                Retry
-            </Typography>
-        </Box>
-    }, [dispatch])
+    const fetchMore = async () => {
+        if (!hasMore || isFetchingMore) return;
+        setIsFetchingMore(true);
+        const newPage = page + 1;
 
-    const getLoadingProgressComponent = useCallback(() => {
-        return <Box display="flex" justifyContent="center" alignItems="center" minHeight="200px">
-                <CircularProgress />
-            </Box>
-    }, [])
+        const result = await dispatch(fetchContent({ page: newPage, limit: constants.CONTENT_LIST_PAGE_LIMIT }));
+        if (result.payload) setHasMore(false);
+        else setPage(newPage);
 
-    return (
-        <Box display="flex" flexDirection="column" flex={1} sx={{ marginX: '50px'}}>
-            <KeySearch 
-                searchText={key} 
-                onTextChange={(value) => setKey(value)}
-            />
+        setIsFetchingMore(false);
+    };
 
-            <Box display="flex" flexDirection="column" flex={1}>
-                <ContentFilter 
-                    isPaid={isPaid} 
-                    isFree={isFree} 
-                    isViewOnly={isViewOnly}
-                    priceRange={[minPrice, maxPrice]}
-                    minRange = {minPriceRange}
-                    maxRange = {maxPriceRange}
-                    onPaidChange={() => setPaid(prev => !prev)}
-                    onFreeChange={() => setFree(prev => !prev)}
-                    onViewOnlyChange={() => setViewOnly(prev => !prev)}
-                    onReset={handleReset}
-                    onPriceRangeChange={handlePriceRangeChange}
-                />
-            </Box>
-
-            <FormControl variant="standard" sx={{ ml: 'auto', minWidth: 120 , maxWidth: 220 }}>
-                 <Select
-                    labelId="sort-label"
-                    id="sort-select"
-                    value={sortBy}
-                    onChange={handleSortByChange}
-                >
-                    <MenuItem value={"0"}>Name</MenuItem>
-                    <MenuItem value={"1"}>Price: High to low</MenuItem>
-                    <MenuItem value={"2"}>Price: Low to high</MenuItem>
-                </Select>
-            </FormControl>
-           
-            <Box display="flex" flexDirection="column" flex={1}>
-                { !loading && error && ( getErrorComponent())}
-                { loading && ( getLoadingProgressComponent()) }
-                { !loading && (
-                    <Suspense fallback={getLoadingProgressComponent()}>
-                        <ContentListContainer data={sortedData}/>
-                    </Suspense>
-                )}
-            </Box>
-        </Box>
-    )
+    return {
+        loading,
+        error,
+        sortedData,
+        key,
+        isPaid,
+        isFree,
+        isViewOnly,
+        sortBy,
+        minPrice,
+        maxPrice,
+        minPriceRange,
+        maxPriceRange,
+        setKey,
+        setPaid,
+        setFree,
+        setViewOnly,
+        handleReset,
+        handlePriceRangeChange,
+        handleSortByChange,
+        dispatch,
+        page,
+        fetchMore,
+        hasMore,
+        isFetchingMore
+    }
 }
