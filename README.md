@@ -114,6 +114,7 @@ you chose each one.
   - Keyword search with debounced filtering ✅
   - Content filter : Pricing options, Reset button and slider ✅
   - Contents List, with lazy loading, responsive based on device ✅
+  - Home page, Container component for all the above components ✅
 - P1: URL State management for filters and key search ✅
 - P1: Unit Tests ✅
 - P2: Sorting ✅
