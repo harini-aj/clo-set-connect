@@ -1,3 +1,21 @@
+This project is built using Vite, React, TypeScript, and Material UI.
+
+### Tech Stack
+- ⚡️ Vite – blazing-fast frontend build tool
+-  ⚛️ React – UI library
+-  📘 TypeScript – static typing for JavaScript
+-  🎨 Material UI (MUI) – modern React UI framework
+-  🧪 Jest – JavaScript testing framework
+
+#### Install dependencies
+    npm install
+    
+#### Start Development Server
+    npm run dev
+    
+#### Run Tests
+    npm test
+
 # Functional Requirements
 
 ### 1. Contents Filter
@@ -93,16 +111,17 @@ you chose each one.
 
 
 # Tasks Identified
-- P1: Inititial project setup using vite + typescript, Material UI, Redux Toolkit 
-- P1: Redux store setup
+- P1: Inititial project setup using vite + typescript, Material UI, Redux Toolkit ✅
+- P1: Redux store setup ✅
 - P1: UI Components
-      - Keyword search with debounced fetch
-      - Content filter
-      - Contents List, with lazy loading, infinite scroll, responsive based on device
-- P1: URL Statemanagement for filters
-- P1: Unit Tests
-- P2: Sorting
-- P2: Pricing slider filter
+      - Keyword search with debounced fetch ✅
+      - Content filter : Pricing options, Reset button and slider ✅
+      - Contents List, with lazy loading, responsive based on device ✅
+- P1: URL Statemanagement for filters ✅
+- P1: Unit Tests ✅
+- P2: Sorting ✅
+- P2: Pricing slider filter ✅
+- P2: Infinite scroll (Partial implmentation) 🔄
 
 
 # Setup
@@ -186,7 +205,7 @@ API : [https://closet-recruiting-api.azurewebsites.net/api/data](https://closet-
 # References
 
 Vite setup:
-(https://vite.dev/guide/)[https://vite.dev/guide/]
+[https://vite.dev/guide/](https://vite.dev/guide/)
 
 React API Documnetation:
 [https://react.dev/reference/react](https://react.dev/reference/react)
