@@ -1,4 +1,4 @@
-import React, { Suspense, useCallback } from "react"
+import React, { Suspense, useCallback, type ReactNode } from "react"
 import { KeySearch } from "../../feature/key-search/KeySearch"
 import ContentFilter from "../../feature/content-filter/ContentFilter"
 import Box from '@mui/material/Box';
@@ -9,8 +9,9 @@ const ContentListContainer = lazy(() => import("../../feature/content-list/Conte
 import { useHomeState } from "./useHomeState";
 import { constants } from "../../utils/constants";
 import { LoadMoreTrigger } from "../../component/LoadMoreTrigger";
+import type { JSX } from "@emotion/react/jsx-runtime";
 
-export const Home:React.FC = () => {
+export const Home:React.FC = (): ReactNode => {
     const {loading,
         error,
         sortedData,
@@ -32,11 +33,11 @@ export const Home:React.FC = () => {
         handleSortByChange,
         dispatch,
         page,
-        fetchMore,
+        //fetchMore,   //for infinite scroll
         hasMore,
         isFetchingMore} = useHomeState()
 
-    const getErrorComponent = useCallback(() => {
+    const getErrorComponent = useCallback((): JSX.Element => {
         return <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" minHeight="200px">
             <Typography color="error" variant="body1" sx={{ mb: 1 }}>
                 Something went wrong while fetching content.
@@ -52,7 +53,7 @@ export const Home:React.FC = () => {
         </Box>
     }, [dispatch, page])
 
-    const getLoadingProgressComponent = useCallback(() => {
+    const getLoadingProgressComponent = useCallback((): JSX.Element => {
         return <Box display="flex" justifyContent="center" alignItems="center" minHeight="200px">
                 <CircularProgress />
             </Box>
@@ -100,11 +101,12 @@ export const Home:React.FC = () => {
                 { !loading && (
                     <Suspense fallback={getLoadingProgressComponent()}>
                         <ContentListContainer data={sortedData}/>
-                        {hasMore && <LoadMoreTrigger onVisible={fetchMore} />}
+                        {hasMore && <LoadMoreTrigger onVisible={() => {}} />}
                         {isFetchingMore && (
                         <Box display="flex" justifyContent="center" mt={2}>
                             <CircularProgress size={20} />
-                        </Box>)}
+                        </Box>
+                        )}
                     </Suspense>
                 )}
             </Box>

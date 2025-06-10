@@ -37,7 +37,7 @@ describe("contentSlice", () => {
       items: [],
       loading: false,
       error: null,
-      hasMore: true,
+      hasMore: false,
       page: 1
     });
   });

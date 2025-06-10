@@ -16,12 +16,13 @@ const initialState: ContentState = {
     loading: false,
     error: null,
     page: 1,
-    hasMore: true
+    hasMore: false //Disabling this for now
 } satisfies ContentState as ContentState
 
 export const fetchContent = createAsyncThunk(
   "content/fetchContent",
   async ({ page = 1, limit = constants.CONTENT_LIST_PAGE_LIMIT }: { page: number; limit: number }) => {
+    //console.log("Fetching...")
     const response = await axios.get("https://closet-recruiting-api.azurewebsites.net/api/data");
     const allData = response.data;
 
@@ -51,7 +52,7 @@ export const contentSlice = createSlice({
         }).
         addCase(fetchContent.rejected, (state, action) => {
             state.loading = false
-            state.error = action.error.message || "Something went wrong retry"
+            state.error = action.error.message || "Something went wrong please retry"
         })
     }
 })

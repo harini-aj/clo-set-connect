@@ -1,11 +1,10 @@
-import { Button, FormControlLabel, Slider, Typography, type SxProps, type Theme } from "@mui/material"
+import { Button, FormControlLabel, Slider, Typography } from "@mui/material"
 import { Box } from "@mui/system";
 import type React from "react";
 import Checkbox from '@mui/material/Checkbox';
 
 
 export type ContentFilterProps = {
-    sx?: SxProps<Theme>;
     isPaid: boolean;
     isFree: boolean;
     isViewOnly: boolean;
@@ -19,7 +18,7 @@ export type ContentFilterProps = {
     onReset: ()=> void;
 }
 
-const ContentFilter:React.FC<ContentFilterProps> = ({ 
+const ContentFilter:React.FC<ContentFilterProps> = ({
     isPaid, 
     isFree,  
     isViewOnly, 
