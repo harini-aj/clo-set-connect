@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import type { Content } from '../../types/content.types';
 import { Box } from '@mui/material';
 
-type props = {
+export type ContentCardProps = {
     data?: Content
 }
 
@@ -21,7 +21,7 @@ const getFreeViewOnlyTypography = (data: Content) => {
         </Typography>
 }
 
-export const ContentCard:React.FC<props> = ({ data }) => {
+export const ContentCard:React.FC<ContentCardProps> = ({ data }) => {
   return data && (
      <Card sx={{ maxWidth: 245 }} key={data.id}>
       <CardMedia
