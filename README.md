@@ -37,7 +37,6 @@ This project is built using Vite, React, TypeScript, and Material UI.
   - Below 1200px: 3 columns
   - Below 768px: 2 columns
   - Below 480px: 1 column
-- Implement infinite scroll to load more items as the user scrolls (loading size can be determined as needed).
 
 ### 3. Keyword Search
 
